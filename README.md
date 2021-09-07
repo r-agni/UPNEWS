@@ -1,2 +1,2 @@
-# HTCSHackathonUpNews
- 
+HTCSHackathonUpNews
+https://sahilvoona.github.io/HTCSHackathonUpNews/
