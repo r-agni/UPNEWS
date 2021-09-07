@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      span{
+        padding: 5px
+      }
+      table {table-layout: fixed; background-color: #636363;}
+      table, th, td {
+        border: 3px solid #8675a9;
+        border-collapse: collapse;
+      }
+      table, th, td {
+        padding: 5px 10px 5px 10px;
+      }
+      th {color: #ff96bf!important}
+      .arrow {
+        border: solid #424242;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        cursor: pointer;
+        transition: all 0.75s ease;
+      }
+
+      .arrow:hover{border-color: #eb6095}
+
+      .up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+      }
+
+      .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpNews</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+
+    <link rel="icon" href="https://cdn.ps.emap.com/wp-content/uploads/sites/3/2020/04/Coronavirus-icon-orange-11.png">
+    <style>
+      img {
+        width: 650px;
+        padding: 0px;
+        border: 10px solid #000000;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="tm-header" id="tm-header">
+      <div class="tm-header-wrapper">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="tm-site-header">
+          <!--Logo below-->
+          <div class="mb-3 mx-auto tm-site-logo"><img src="https://cdn.ps.emap.com/wp-content/uploads/sites/3/2020/04/Coronavirus-icon-orange-11.png" style="width:150px!important; border-style: none!important"></div>            
+          <h1 class="text-center">UpNews</h1>
+        </div>
+        <nav class="tm-nav" id="tm-nav">            
+          <ul>
+            <li class="tm-nav-item"><a href="login.html" class="tm-nav-link">
+              <i class="fas fa-user"></i>
+              Login
+          </a></li>
+            <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+              <i class="fas fa-home"></i>
+              Blog Home
+              </a></li>
+            <li class="tm-nav-item active"><a href="coviddashboard.html" class="tm-nav-link">
+              <i class="fas fa-medkit"></i>
+              COVID Dashboard
+              </a></li>
+            <li class="tm-nav-item"><a href="post.html" class="tm-nav-link">
+              <i class="fas fa-pen"></i>
+              Upload Post
+              </a></li>
+            <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
+              <i class="fas fa-users"></i>
+              About UpNews
+              </a></li>
+            <li class="tm-nav-item"><a href="contact.html" class="tm-nav-link">
+              <i class="far fa-comments"></i>
+              Contact Us
+              </a></li>
+          </ul>
+        </nav>
+        <div class="tm-mb-65">
+          <a href="https://facebook.com" class="tm-social-link">
+            <i class="fab fa-facebook tm-social-icon"></i>
+          </a>
+          <a href="https://twitter.com" class="tm-social-link">
+            <i class="fab fa-twitter tm-social-icon"></i>
+          </a>
+          <a href="https://instagram.com" class="tm-social-link">
+            <i class="fab fa-instagram tm-social-icon"></i>
+          </a>
+          <a href="https://linkedin.com" class="tm-social-link">
+            <i class="fab fa-linkedin tm-social-icon"></i>
+          </a>
+        </div>
+        <p class="tm-mb-80 pr-5 text-white">
+          UpNews is an info-media app which works to help inform and provide the latest data during the coronavirus pandemic. This app provides all information regarding to the pandemic through articles from top news sources to latest easy to read data from the CDC and WHO.
+        </p>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <!-- Search form --> 
+      <!--implement page here-->
+      <main class="tm-main">
+        <div class="row tm-row">
+          <div class="col-12">
+            <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
+              <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
+              <button class="tm-search-button" type="submit">
+                <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+              </button>                                
+            </form>
+          </div>                
+        </div>      
+        <div id="table">
+          <table id="demo" style="width:100%; color:#c3aed6; border-color: #8675a9">
+            <tr><center><th><span>Country:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="Country"></i><br><i class="arrow down" id="Country"></i></div></th><th><span>New (Confirmed):  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewConfirmed"></i><br><i class="arrow down" id="NewConfirmed"></i></div></th><th><span>Total (Confirmed):  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalConfirmed"></i><br><i class="arrow down" id="TotalConfirmed"></i></div></th><th><span>New Deaths:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewDeaths"></i><br><i class="arrow down" id="NewDeaths"></i></div></th><th><span>Total Deaths:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalDeaths"></i><br><i class="arrow down" id="TotalDeaths"></i></div></th><th><span>New Recovered:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewRecovered"></i><br><i class="arrow down" id="NewRecovered"></i></div></th><th><span>Total Recovered:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalRecovered"></i><br><i class="arrow down" id="TotalRecovered"></i></div></th></center></tr>
+          </table>
+
+          <script>
+            let url = 'https://api.covid19api.com/summary';
+
+            fetch(url)
+              .then(res => res.json())
+              .then((out) => {
+              delete out.Message;
+              out.Global.Country="Global"
+              out.Countries.unshift(out.Global)
+              Show(out.Countries);
+              Sort(out.Countries);
+            })
+              .catch(err => { document.getElementById("demo").innerHTML="Oops! There was an error. Please try again later." });
+
+            function Show(Data){
+              var table = document.getElementById("demo")
+
+              for (var i=0; i<Data.length; i++){
+                var cell1 = document.createElement('td');
+                cell1.innerHTML=Data[i].Country;
+                var cell2 = document.createElement('td');
+                cell2.innerHTML=Data[i].NewConfirmed;
+                var cell3 = document.createElement('td');
+                cell3.innerHTML=Data[i].TotalConfirmed;
+                var cell4 = document.createElement('td');
+                cell4.innerHTML=Data[i].NewDeaths
+                var cell5 = document.createElement('td');
+                cell5.innerHTML=Data[i].TotalDeaths;
+                var cell6 = document.createElement('td');
+                cell6.innerHTML=Data[i].NewRecovered
+                var cell7 = document.createElement('td');
+                cell7.innerHTML=Data[i].TotalRecovered;
+
+                var row = document.createElement('tr');
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+                row.appendChild(cell4);
+                row.appendChild(cell5);
+                row.appendChild(cell6);
+                row.appendChild(cell7);
+
+                table.appendChild(row);
+              }
+            }
+
+            function Sort(Data){
+              var Titles1=document.querySelectorAll(".up")
+              for (var i=0; i<Titles1.length; i++){
+                Titles1[i].addEventListener("click", function (e){
+                  var SortBy=e.target.id
+                  Data.sort(function (a, b) {
+                    if (isNaN(a[SortBy]) & isNaN(b[SortBy])){
+                      return b[SortBy].toLowerCase().localeCompare(a[SortBy].toLowerCase());
+                    }
+                    else {
+                      return b[SortBy] - a[SortBy];
+                    }
+                  });
+
+                  document.getElementById('demo').remove();
+                  document.getElementById("table").innerHTML+=`<table id="demo" style="width:100%; color:#c3aed6; border-color: #8675a9">
+            <tr><center><th><span>Country:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="Country"></i><br><i class="arrow down" id="Country"></i></div></th><th><span>New (Confirmed):  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewConfirmed"></i><br><i class="arrow down" id="NewConfirmed"></i></div></th><th><span>Total (Confirmed):  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalConfirmed"></i><br><i class="arrow down" id="TotalConfirmed"></i></div></th><th><span>New Deaths:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewDeaths"></i><br><i class="arrow down" id="NewDeaths"></i></div></th><th><span>Total Deaths:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalDeaths"></i><br><i class="arrow down" id="TotalDeaths"></i></div></th><th><span>New Recovered:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewRecovered"></i><br><i class="arrow down" id="NewRecovered"></i></div></th><th><span>Total Recovered:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalRecovered"></i><br><i class="arrow down" id="TotalRecovered"></i></div></th></center></tr>
+          </table>`;
+                  Show(Data);
+                  Sort(Data);
+                })
+              }
+
+              var Titles2=document.querySelectorAll(".down")
+              for (var i=0; i<Titles2.length; i++){
+                Titles2[i].addEventListener("click", function (e){
+                  var SortBy=e.target.id
+                  Data.sort(function (a, b) {
+                    if (isNaN(a[SortBy]) & isNaN(b[SortBy])){
+                      return a[SortBy].toLowerCase().localeCompare(b[SortBy].toLowerCase());
+                    }
+                    else {
+                      return a[SortBy] - b[SortBy];
+                    }
+                  });
+
+                  document.getElementById('demo').remove();
+                  document.getElementById("table").innerHTML+=`<table id="demo" style="width:100%; color:#c3aed6; border-color: #8675a9">
+            <tr><center><th><span>Country:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="Country"></i><br><i class="arrow down" id="Country"></i></div></th><th><span>New (Confirmed):  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewConfirmed"></i><br><i class="arrow down" id="NewConfirmed"></i></div></th><th><span>Total (Confirmed):  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalConfirmed"></i><br><i class="arrow down" id="TotalConfirmed"></i></div></th><th><span>New Deaths:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewDeaths"></i><br><i class="arrow down" id="NewDeaths"></i></div></th><th><span>Total Deaths:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalDeaths"></i><br><i class="arrow down" id="TotalDeaths"></i></div></th><th><span>New Recovered:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="NewRecovered"></i><br><i class="arrow down" id="NewRecovered"></i></div></th><th><span>Total Recovered:  </span><div style="display:inline-block; vertical-align: middle"><i class="arrow up" id="TotalRecovered"></i><br><i class="arrow down" id="TotalRecovered"></i></div></th></center></tr>
+          </table>`;
+                  Show(Data);
+                  Sort(Data);
+                })
+              }
+            }
+          </script>
+        </div>
+        <footer class="row tm-row">
+          <hr class="col-12">
+          <div class="col-md-6 col-12 tm-color-gray">
+            <a>HTCS Hackathon Project</a>
+          </div>
+          <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+            Developed By Sahil Voona, Agni Rajinikanth, Shrey Agarwal, Eshaan Debnath, and Nehal Bajaj
+          </div>
+        </footer>
+        </div>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/templatemo-script.js"></script>
+
+
+
+      <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+      <script src="/__/firebase/7.22.0/firebase-app.js"></script>
+
+      <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+      <script src="/__/firebase/7.22.0/firebase-analytics.js"></script>
+
+      <!-- Add Firebase products that you want to use -->
+      <script src="/__/firebase/7.22.0/firebase-auth.js"></script>
+      <script src="/__/firebase/7.22.0/firebase-firestore.js"></script>
+
+
+
+      <!-- Previously loaded Firebase SDKs -->
+
+      <!-- Initialize Firebase -->
+      <script src="/__/firebase/init.js"></script>
+      <script>
+        //Create User
+
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+
+
+        //Sign user in
+
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+
+
+        //Sign User out
+
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+        }).catch(function(error) {
+          // An error happened.
+        });
+      </script>
+    </div>
+  </body>
+</html>
